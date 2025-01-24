@@ -3,16 +3,16 @@
 This is a web interface to [YOLOv8 object detection neural network](https://ultralytics.com/yolov8)
 implemented on [Rust](https://www.rust-lang.org/).
 
-This is a source code for a ["How to create YOLOv8-based object detection web service using Python, Julia, Node.js, JavaScript, Go and Rust"](https://dev.to/andreygermanov/how-to-create-yolov8-based-object-detection-web-service-using-python-julia-nodejs-javascript-go-and-rust-4o8e) tutorial.
-
 ## Install
 
-* Clone this repository: `git clone git@github.com:AndreyGermanov/yolov8_onnx_rust.git`
+* Clone this repository: `git clone git@github.com:IshmamR/YOLO-Rust-ORT-CUDA.git`
 
 Ensure that the ONNX runtime installed on your operating system, because the library that integrated to the 
 Rust package may not work correctly. To install it, you can download the archive for your operating system 
 from [here](https://github.com/microsoft/onnxruntime/releases), extract and copy contents of "lib" subfolder
 to the system libraries path of your operating system.
+
+Ensure CUDA(12.) and CUDNN(9.) installed. Otherwise it will fall back to using CPU for inference.
 
 ## Run
 
