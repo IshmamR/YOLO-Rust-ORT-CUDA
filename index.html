@@ -41,13 +41,24 @@
                 ctx.strokeStyle="#00FF00";
                 ctx.lineWidth=3;
                 ctx.font="18px serif";
-                boxes.forEach(([x1, y1, x2, y2, label]) => {
-                    ctx.strokeRect(x1, y1, x2-x1, y2-y1);
+                boxes.forEach((box) => {
+                    ctx.strokeRect(
+                        box.top_left[0], box.top_left[1],
+                        (box.bottom_right[0]-box.top_left[0]), (box.bottom_right[1]-box.top_left[1])
+                    );
                     ctx.fillStyle="#00ff00";
+                    const label=`Prob: ${box.confidence}`;
                     const width=ctx.measureText(label).width;
-                    ctx.fillRect(x1, y1, width+10, 25);
+                    ctx.fillRect(box.top_left[0], box.top_left[1], width+10, 25);
                     ctx.fillStyle="#000000";
-                    ctx.fillText(label, x1, y1+18);
+                    ctx.fillText(label, box.top_left[0], box.top_left[1]+18);
+
+                    ctx.fillStyle="red";
+                    box.keypoints.forEach(([x, y]) => {
+                        ctx.beginPath();
+                        ctx.arc(x, y, 3, 0, Math.PI*2); // Small circle (3px radius)
+                        ctx.fill();
+                    });
                 });
             }
         }
